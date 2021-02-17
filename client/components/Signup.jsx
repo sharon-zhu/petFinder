@@ -1,8 +1,8 @@
 import React, { Component, useState } from 'react';
-import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Col, Row} from 'react-bootstrap';
+import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Col} from 'react-bootstrap';
 
 
-const signUpForm = () => {
+const SignUpForm = () => {
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -21,7 +21,7 @@ const signUpForm = () => {
             zipcode: zipCode
         }
 
-        fetch({method : "POST", headers : {'Content-type' : 'application/json'}, body : JSON.stringify(data)})
+        fetch('/api/signup',{method : "POST", headers : {'Content-type' : 'application/json'}, body : JSON.stringify(data)})
         //
         .then(data => console.log("posted User into Users table", data))
         .catch(err => console.log("error in fetching", err))
@@ -30,13 +30,9 @@ const signUpForm = () => {
 
   return (
     <div>
-      <row>
         <h2 className = "signUpHeader">Sign Up Here!</h2>
-      </row>
-      <row>
         <Col></Col>
         <Col className="signUpForm">
-          
         <Form>
             <Form.Group controlId="formBasicFirstName">
             <Form.Label>First Name</Form.Label>
@@ -69,8 +65,7 @@ const signUpForm = () => {
           </Form>
         </Col>
      <Col></Col>
-    </row>
 </div>)
 }
 
-export default signUpForm;
+export default SignUpForm;

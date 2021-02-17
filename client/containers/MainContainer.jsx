@@ -6,6 +6,7 @@ import PetContainer from './PetContainer';
 import Navigation from '../components/Navigation';
 import styles from '../styles.css';
 import Signup from '../components/Signup'
+import Login from '../components/Login'
 
 class MainContainer extends Component {
   constructor() {
@@ -16,7 +17,7 @@ class MainContainer extends Component {
     // what kinda of animal 
     this.state.type = '';
     this.state.favs = [];
-    this.state.indexPage = true;
+    this.state.indexPage = false;
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSave = this.handleSave.bind(this);
     //this.handleTypeChange = this.handleTypeChange.bind(this);
@@ -131,8 +132,9 @@ class MainContainer extends Component {
           handleSearch = {this.handleSearch}
           handleTypeChange = {this.handleTypeChange}
           />
-          <PetContainer
-          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/>
+          {/* <PetContainer
+          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/> */}
+          <Login/>
 
         </div>
       )
