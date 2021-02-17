@@ -2,3 +2,17 @@
   height: 80vh
 }
 
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding-left: 20vw;
+  padding-right: 20vw;
+  /* max-width: 600px; */
+}
+
+.signUpHeader {
+  
+  margin-top: 8vh;
+  text-align: center;
+}
