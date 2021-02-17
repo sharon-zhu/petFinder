@@ -3,6 +3,7 @@ import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Col, Row} from 'rea
 
 
 const signUpForm = () => {
+
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -10,20 +11,23 @@ const signUpForm = () => {
     const [zipCode, setZipCode] = useState('')
 
     const submitSignupForm = () => {
+        event.preventDefault();
+
         const data = {
             firstName : firstName,
             lastName : lastName,
             email : email,
             psword : password,
-            zipCode: zipCode
+            zipcode: zipCode
         }
 
         fetch({method : "POST", headers : {'Content-type' : 'application/json'}, body : JSON.stringify(data)})
-        .then(res => res.json())
-        .catch(err => console.log(err))
+        //
+        .then(data => console.log("posted User into Users table", data))
+        .catch(err => console.log("error in fetching", err))
 
     }
-    
+
   return (
     <div>
       <row>
@@ -49,7 +53,7 @@ const signUpForm = () => {
             <Form.Control type="email" placeholder="Enter Email.." onChange={(e) => setEmail(e.target.value)}/>
             </Form.Group>
 
-            <Form.Group controlId="formEmail">
+            <Form.Group controlId="formPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Enter Password.." onChange={(e) => setPassword(e.target.value)}/>
             </Form.Group>
@@ -59,7 +63,7 @@ const signUpForm = () => {
             <Form.Control type="text" placeholder="Enter Zip Code.." onChange={(e) => setZipCode(e.target.value)}/>
             </Form.Group>
 
-            <Button variant="primary" type="submit" onSubmit={submitSignupForm} >
+            <Button variant="primary" type="button" onClick={(e) => submitSignupForm(e)}>
             Submit
             </Button>
           </Form>

@@ -16,7 +16,7 @@ class MainContainer extends Component {
     // what kinda of animal 
     this.state.type = '';
     this.state.favs = [];
-    this.state.indexPage = false;
+    this.state.indexPage = true;
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSave = this.handleSave.bind(this);
     //this.handleTypeChange = this.handleTypeChange.bind(this);
@@ -69,7 +69,7 @@ class MainContainer extends Component {
         this.setState({
           ...this.state,
           fetchedPetData: data,
-          indexPage: false,
+          indexPage: true,
         })
     })
     }
@@ -106,16 +106,16 @@ class MainContainer extends Component {
   }
 
   render() {
-    console.log(this.state)
+    //console.log(this.state)
     //render index page version of MainContainer at initial render
     if (this.state.indexPage){
       return (
         <Container>
           <Row>
             <Col> 
-              {/* <Navigation 
+              <Navigation 
                 indexPage = {this.state.indexPage}
-                handleSearch = {this.handleSearch} />  */}
+                handleSearch = {this.handleSearch} /> 
                 
             </Col>
           </Row>
@@ -131,9 +131,9 @@ class MainContainer extends Component {
           handleSearch = {this.handleSearch}
           handleTypeChange = {this.handleTypeChange}
           />
-          {/* <PetContainer
-          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/> */}
-          <Signup /> 
+          <PetContainer
+          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/>
+
         </div>
       )
     }
