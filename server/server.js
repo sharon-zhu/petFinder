@@ -1,53 +1,33 @@
+const path = require('path');   
 const express = require('express');
-const path = require('path');
+// const cookieParser = require('cookie-parser');
 
 const app = express();
-const PORT = 3000;
 
+// const apiRouter = require('./routes/api');
+// const contentRouter = require('./routes/content')
+const apiRouter = require('./router/api');
 
-
-//parser to json object
+/**
+ * parse request body
+ */
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
+// app.use(cookieParser());
 
-//serving static files
+/**
+ * handle static files
+ */
 app.use(express.static(path.resolve(__dirname, '../build')));
-app.use(express.static(path.resolve(__dirname, '../client')));
 
 
-
-//connecting to routers
-const dbRouter = require('./router/dbRouter');
-const petfinderRouter = require('./router/petfinderRouter');
-app.use('/db', dbRouter);
-app.use('/petfinder', petfinderRouter);
+/**
+ * define route handlers
+ */
+app.use('/api', apiRouter)
 
 
-//serve index.html file
-app.get('/', (req, res) => {  res.status(200);
-  res.sendFile(path.resolve(__dirname, '../client/index.html'));
-});
+// app.use('/petFinderApi', contentRouter)
 
-
-
-//catching all other requests to unknown routes
-app.use('*',(req, res) => res.status(404).send('No Pet Information found on this page! :('));
-
-//global error handler
-app.use((err, req, res, next) => {
-  const defaultErr = {
-    log: 'Express error handler caught unknown middleware error',
-    status: 500,
-    message: { err: 'An error occurred' },
-  };
-  const errorObj = Object.assign({}, defaultErr, err);
-  console.log(errorObj.log);
-  return res.status(errorObj.status).json(errorObj.message);
-});
-
-//listening on port:
-app.listen(PORT, () => {
-  console.log(`Server listening on port: ${PORT}...`);
-});
-
-module.export = app;
+const PORT = 3000;
+app.listen(PORT, console.log("listening on port: ", PORT));

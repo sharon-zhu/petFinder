@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Container from 'react-bootstrap/Container'
 import { Col, Row } from 'react-bootstrap';
-
 import PetContainer from './PetContainer';
 import Navigation from '../components/Navigation';
 import styles from '../styles.css';
-import realFakeData from '../FakeModel/realFakeData';
-import fakeData from '../FakeModel/fakeData';
+import Signup from '../components/Signup'
 
 class MainContainer extends Component {
   constructor() {
@@ -15,21 +13,21 @@ class MainContainer extends Component {
     this.state = {};
     this.state.fetchedPetData = [];
     this.state.zipcode = '';
+    // what kinda of animal 
     this.state.type = '';
     this.state.favs = [];
-    this.state.indexPage = true;
+    this.state.indexPage = false;
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSave = this.handleSave.bind(this);
-    this.handleTypeChange = this.handleTypeChange.bind(this);
+    //this.handleTypeChange = this.handleTypeChange.bind(this);
   }
 
-  handleTypeChange(event) {
-    console.log('inside handleTypeChange')
-    console.log(event.target.value)
-
-    this.setState({value: event.target.value});
-
-  }
+//DIDNT USE!!
+  // handleTypeChange(event) {
+  //   console.log('inside handleTypeChange')
+  //   console.log(event.target.value)
+  //   this.setState({value: event.target.value});
+  // }
 
   //handle search requests
   handleSearch(e){
@@ -115,9 +113,10 @@ class MainContainer extends Component {
         <Container>
           <Row>
             <Col> 
-              <Navigation 
+              {/* <Navigation 
                 indexPage = {this.state.indexPage}
-                handleSearch = {this.handleSearch} /> 
+                handleSearch = {this.handleSearch} />  */}
+                
             </Col>
           </Row>
         </Container>
@@ -131,10 +130,10 @@ class MainContainer extends Component {
           <Navigation 
           handleSearch = {this.handleSearch}
           handleTypeChange = {this.handleTypeChange}
-
           />
-          <PetContainer
-          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/>
+          {/* <PetContainer
+          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/> */}
+          <Signup /> 
         </div>
       )
     }
