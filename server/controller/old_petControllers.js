@@ -56,4 +56,4 @@ itemController.deleteItem = (req,res) => {
 };
 
 
-module.exports = itemController;
+module.exports = petController;
