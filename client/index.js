@@ -4,7 +4,6 @@ import MainContainer from './containers/MainContainer'
 
 render(
     <MainContainer />,
-  
   document.getElementById('app'),
 );
 

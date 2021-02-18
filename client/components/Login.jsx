@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Col, Row} from 'react-bootstrap';
+import React, { useState } from 'react';
+import {Form, Button, Col} from 'react-bootstrap';
 
 
 
@@ -17,7 +17,7 @@ const Login = () =>{
       .then(data => console.log("logged in" , data))
       .catch(err => console.log("error in fetching", err))
   }
-  
+
   return (
     <div>
       <h2 className = "signUpHeader">Log in.</h2>
