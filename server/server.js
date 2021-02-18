@@ -3,22 +3,30 @@ const express = require('express');
 // const cookieParser = require('cookie-parser');
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+app.use(express.static(path.resolve(__dirname, '../build')));
+app.use(express.static(path.resolve(__dirname, '../client')));
+
 
 // const apiRouter = require('./routes/api');
 // const contentRouter = require('./routes/content')
 const apiRouter = require('./router/api');
 
+const petfinderRouter = require('./router/petfinderRouter');
+app.use('/petfinder', petfinderRouter)
+
 /**
  * parse request body
  */
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+
 // app.use(cookieParser());
 
 /**
  * handle static files
  */
-app.use(express.static(path.resolve(__dirname, '../build')));
+
 
 
 /**
