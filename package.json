@@ -24,6 +24,7 @@
     "bcrypt": "^5.0.0",
     "bootstrap": "^4.6.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "import": "0.0.6",
     "mongoose": "^5.11.15",
     "pg": "^8.5.1",
@@ -31,7 +32,11 @@
     "react-bootstrap": "^1.4.3",
     "react-dom": "^16.3.1",
     "react-lottie": "^1.2.3",
+<<<<<<< HEAD
     "react-router-dom": "^5.2.0",
+=======
+    "uuid": "^8.3.2",
+>>>>>>> 7d3b590df5567b4042f53d2e7c593909102cdb75
     "webpack-dev-server": "^3.11.2"
   },
   "devDependencies": {
