@@ -1,13 +1,11 @@
-import React, { Component, useState, useContext } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Container from 'react-bootstrap/Container'
 import { Col, Row } from 'react-bootstrap';
 import PetContainer from './PetContainer';
 import Navigation from '../components/Navigation';
 import styles from '../styles.css';
-
 import Signup from '../components/Signup'
-import Login from '../components/Login'
 
 class MainContainer extends Component {
   constructor() {
@@ -18,8 +16,16 @@ class MainContainer extends Component {
     // what kinda of animal 
     this.state.type = '';
     this.state.favs = [];
-    this.state.indexPage = true;
+    this.state.indexPage = false;
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleSave = this.handleSave.bind(this);
+    //this.handleTypeChange = this.handleTypeChange.bind(this);
+  }
+
+  handleTypeChange(event) {
+    console.log('inside handleTypeChange')
+    console.log(event.target.value)
+    this.setState({value: event.target.value});
   }
 
   //handle search requests
@@ -62,7 +68,7 @@ class MainContainer extends Component {
         this.setState({
           ...this.state,
           fetchedPetData: data,
-          indexPage: true,
+          indexPage: false,
         })
     })
     }
@@ -71,73 +77,6 @@ class MainContainer extends Component {
     //parse through retrieved data
     //update state to render 
   }
-
-  render() {
-    //console.log(this.state)
-    //render index page version of MainContainer at initial render
-    if (this.state.indexPage){
-      return (
-        <Container>
-          <Row>
-            <Col> 
-              <Navigation 
-                indexPage = {this.state.indexPage}
-                handleSearch = {this.handleSearch} />   
-            </Col>
-          </Row>
-        </Container>
-      )
-    }
-
-    //render MainContainer with Navigation at all other times
-    if (!this.state.indexPage){
-      return (
-        <div>
-          <Navigation 
-          handleSearch = {this.handleSearch}
-          />
-          <PetContainer
-          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/>
-          {/* <Login/> */}
-
-        </div>
-      )
-    }
-  }   
-}
-
-export default MainContainer;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-    this.handleSave = this.handleSave.bind(this);
-    //this.handleTypeChange = this.handleTypeChange.bind(this);
-
-
-
-
-DIDNT USE!!
-  handleTypeChange(event) {
-    console.log('inside handleTypeChange')
-    console.log(event.target.value)
-    this.setState({value: event.target.value});
-  }
-
-
 
   //handle pet saving events
   handleSave(saveId){
@@ -165,11 +104,39 @@ DIDNT USE!!
   })
   }
 
+  render() {
+    console.log(this.state)
+    //render index page version of MainContainer at initial render
+    if (this.state.indexPage){
+      return (
+        <Container>
+          <Row>
+            <Col> 
+              <Navigation 
+                indexPage = {this.state.indexPage}
+                handleSearch = {this.handleSearch} /> 
+                
+            </Col>
+          </Row>
+        </Container>
+      )
+    }
 
+    //render MainContainer with Navigation at all other times
+    if (!this.state.indexPage){
+      return (
+        <div>
+          <Navigation 
+          handleSearch = {this.handleSearch}
+          handleTypeChange = {this.handleTypeChange}
+          />
+          <PetContainer
+          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/>
+          {/* <Signup />  */}
+        </div>
+      )
+    }
+  }   
+}
 
-
-
-
-
-
-*/
+export default MainContainer;
