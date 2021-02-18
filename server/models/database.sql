@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS petList;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users(
-    _id serial PRIMARY KEY,
+    _id serial PRIMARY KEY, 1
     firstName varchar NOT NULL,
     lastName varchar NOT NULL,
     email varchar NOT NULL UNIQUE,
@@ -12,7 +12,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE petList(
-    user_id integer NOT NULL,
+    user_id integer NOT NULL,1
     pet_id varchar NOT NULL,
     PRIMARY KEY (user_id, pet_id),
     FOREIGN KEY (user_id) REFERENCES users(_id)
