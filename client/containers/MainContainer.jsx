@@ -6,6 +6,7 @@ import PetContainer from './PetContainer';
 import Navigation from '../components/Navigation';
 import styles from '../styles.css';
 import Signup from '../components/Signup'
+import Homepage from '../components/Homepage';
 
 class MainContainer extends Component {
   constructor() {
@@ -126,13 +127,13 @@ class MainContainer extends Component {
     if (!this.state.indexPage){
       return (
         <div>
-          <Navigation 
+          {/* <Navigation 
           handleSearch = {this.handleSearch}
           handleTypeChange = {this.handleTypeChange}
           />
           <PetContainer
-          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/>
-          {/* <Signup />  */}
+          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/> */}
+          <Homepage /> 
         </div>
       )
     }
