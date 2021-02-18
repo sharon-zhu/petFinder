@@ -12,7 +12,8 @@
 }
 
 .signUpHeader {
-  
+  display: flex;
+  justify-content: center;
   margin-top: 8vh;
-  text-align: center;
+  /* text-align: center; */
 }

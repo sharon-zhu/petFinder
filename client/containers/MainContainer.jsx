@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import Container from 'react-bootstrap/Container'
 import { Col, Row } from 'react-bootstrap';
@@ -6,6 +6,7 @@ import PetContainer from './PetContainer';
 import Navigation from '../components/Navigation';
 import styles from '../styles.css';
 import Signup from '../components/Signup'
+import Login from '../components/Login'
 
 class MainContainer extends Component {
   constructor() {
@@ -16,18 +17,9 @@ class MainContainer extends Component {
     // what kinda of animal 
     this.state.type = '';
     this.state.favs = [];
-    this.state.indexPage = true;
+    this.state.indexPage = false;
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleSave = this.handleSave.bind(this);
-    //this.handleTypeChange = this.handleTypeChange.bind(this);
   }
-
-//DIDNT USE!!
-  // handleTypeChange(event) {
-  //   console.log('inside handleTypeChange')
-  //   console.log(event.target.value)
-  //   this.setState({value: event.target.value});
-  // }
 
   //handle search requests
   handleSearch(e){
@@ -79,32 +71,6 @@ class MainContainer extends Component {
     //update state to render 
   }
 
-  //handle pet saving events
-  handleSave(saveId){
-    event.preventDefault();
-    console.log(event.target)
-    //send fetch (Post) request here
-    const data = {
-      id: saveId,  
-    }
-    fetch('/db', {
-    method: 'POST',
-    headers: {
-      'Content-Type' : 'application/json',
-    },
-    body: JSON.stringify(data)
-    })
-    // .then(fetch('/getmessages/')
-    .then(data => data.json())
-    .then(data => {
-    //parse through retrieved data
-    //update state to render 
-    this.setState({
-      ...this.state,
-    })
-  })
-  }
-
   render() {
     //console.log(this.state)
     //render index page version of MainContainer at initial render
@@ -131,8 +97,9 @@ class MainContainer extends Component {
           handleSearch = {this.handleSearch}
           handleTypeChange = {this.handleTypeChange}
           />
-          <PetContainer
-          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/>
+          {/* <PetContainer
+          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/> */}
+          <Login/>
 
         </div>
       )
@@ -141,3 +108,69 @@ class MainContainer extends Component {
 }
 
 export default MainContainer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+    this.handleSave = this.handleSave.bind(this);
+    //this.handleTypeChange = this.handleTypeChange.bind(this);
+
+
+
+
+DIDNT USE!!
+  handleTypeChange(event) {
+    console.log('inside handleTypeChange')
+    console.log(event.target.value)
+    this.setState({value: event.target.value});
+  }
+
+
+
+  //handle pet saving events
+  handleSave(saveId){
+    event.preventDefault();
+    console.log(event.target)
+    //send fetch (Post) request here
+    const data = {
+      id: saveId,  
+    }
+    fetch('/db', {
+    method: 'POST',
+    headers: {
+      'Content-Type' : 'application/json',
+    },
+    body: JSON.stringify(data)
+    })
+    // .then(fetch('/getmessages/')
+    .then(data => data.json())
+    .then(data => {
+    //parse through retrieved data
+    //update state to render 
+    this.setState({
+      ...this.state,
+    })
+  })
+  }
+
+
+
+
+
+
+
+
+*/
