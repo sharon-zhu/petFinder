@@ -5,6 +5,7 @@ import { Col, Row } from 'react-bootstrap';
 import PetContainer from './PetContainer';
 import Navigation from '../components/Navigation';
 import styles from '../styles.css';
+
 import Signup from '../components/Signup'
 import Login from '../components/Login'
 
@@ -17,7 +18,7 @@ class MainContainer extends Component {
     // what kinda of animal 
     this.state.type = '';
     this.state.favs = [];
-    this.state.indexPage = false;
+    this.state.indexPage = true;
     this.handleSearch = this.handleSearch.bind(this);
   }
 
@@ -81,8 +82,7 @@ class MainContainer extends Component {
             <Col> 
               <Navigation 
                 indexPage = {this.state.indexPage}
-                handleSearch = {this.handleSearch} /> 
-                
+                handleSearch = {this.handleSearch} />   
             </Col>
           </Row>
         </Container>
@@ -95,11 +95,10 @@ class MainContainer extends Component {
         <div>
           <Navigation 
           handleSearch = {this.handleSearch}
-          handleTypeChange = {this.handleTypeChange}
           />
-          {/* <PetContainer
-          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/> */}
-          <Login/>
+          <PetContainer
+          handleSave = {this.handleSave} fetchedPetData = {this.state.fetchedPetData}/>
+          {/* <Login/> */}
 
         </div>
       )
