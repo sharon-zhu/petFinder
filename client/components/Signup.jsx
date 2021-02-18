@@ -3,7 +3,8 @@ import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Col} from 'react-bo
 
 
 const SignUpForm = () => {
-
+    
+          // variable, function to set vai
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')

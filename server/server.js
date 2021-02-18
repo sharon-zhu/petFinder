@@ -4,12 +4,11 @@ const { v4: uuid } = require('uuid');
 const session = require('express-session');
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 const apiRouter = require('./router/api');
 const petfinderRouter = require('./router/petfinderRouter');
-
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
 
 /**
  * 

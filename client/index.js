@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import MainContainer from './containers/MainContainer'
+import MainReactRouter from './containers/MainReactRouter'
 
 render(
-    <MainContainer />,
+    <MainReactRouter />,
   document.getElementById('app'),
 );
 
