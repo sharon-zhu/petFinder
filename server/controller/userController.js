@@ -1,25 +1,26 @@
 const bcrypt = require('bcrypt')
 const db = require('../models/petsDB.js');
 
-
 userController = {};
 
 userController.getAll = (req, res, next) =>{
-  const getAllUsers = 'select * from users';
-
-  db.query(getAllUsers)
-      .then(data =>{
-          console.log('get all query response ', data.rows);
-          return next();
-      })
-      .catch(e => {
-          console.error(e.stack);
-          return next(e);
-      })
+    const getAllUsers = 'select * from users';
+    console.log('session..in getAll', req.session.uid)
+    if(!req.session.uid){
+        console.log('Not signed in!  Sign in')
+        return res.redirect('/')
+    }
+    console.log('user is authorized! in getAll')
+    db.query(getAllUsers)
+        .then(data =>{
+            console.log('get all query response ', data.rows);
+            return next();
+        })
+        .catch(e => {
+            console.error(e.stack);
+            return next(e);
+        }) 
 }
-
-
-
 
 /*
     input should be an object with: 
@@ -66,6 +67,7 @@ userController.insertUser = (req, res, next) => {
 }
 
 userController.login = (req,res, next) => {
+    let sess = req.session;
     const {email, psword} = req.body;
     const getUser = `select *from users where email = '${email}';`
     db.query(getUser)
@@ -73,6 +75,8 @@ userController.login = (req,res, next) => {
         bcrypt.compare(psword, result.rows[0].psword)
         .then(bcryptResult => {
             if(bcryptResult){
+                //set uid in the session
+                req.session.uid = result.rows[0]._id;                 
                 return next()
             }
             else{

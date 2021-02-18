@@ -21,12 +21,16 @@ router.post('/signup',
     return res.status(200).send('check the console');
 });
 
-router.post('/login', 
+router.post('/login',
   userController.login,
-    (req, res)=> {
-    console.log('user sucessfully logged in account')
-    res.header('content-type', 'application/json'); // maybe put application/json
-    return res.status(200).send('check the console');
+  (req, res)=> {
+  let uid = req.session.uid
+  console.log('this session: ', req.session)
+  console.log('this uid?: ', req.session.uid)
+  
+  console.log('user sucessfully logged in account')
+  res.header('content-type', 'application/json'); // maybe put application/json
+  return res.status(200).send('check the console');
 });
 
 module.exports = router;
