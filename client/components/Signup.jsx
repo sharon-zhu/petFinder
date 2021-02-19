@@ -71,7 +71,6 @@ const SignUpForm = () => {
           </Form>
         </Col>
      <Col></Col>
-</div>)
+  </div>)
 }
-
 export default SignUpForm;
