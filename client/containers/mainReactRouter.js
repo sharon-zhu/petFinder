@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NewNavbar from '../components/NewNavbar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
+import Favorites from '../components/Favorites';
+import styles from '../styles.css';
 // import Error from './Error';
 // import Person from './Person';
 // navbar
@@ -26,6 +28,10 @@ const MainReactRouter = () => {
 
         <Route path='/signup'>
           <Signup />
+        </Route>
+
+        <Route path= '/favs'>
+          <Favorites />
         </Route>
 
         {/* <Route path='/person/:id' children={<Person />}></Route>
