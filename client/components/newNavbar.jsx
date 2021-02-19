@@ -8,9 +8,9 @@ const NewNavbar = () => {
       <Navbar bg="light" variant="light">
         <Navbar.Brand >petFinder</Navbar.Brand>
         <Nav className="mr-auto">
-          <Link to="/"> Home </Link>
-          <Link to="/signup"> Sign Up </Link>
-          <Link to="/login"> Login </Link>
+          <Link className="navbutton" to="/"> Home </Link>
+          <Link className="navbutton" to="/signup"> Sign Up </Link>
+          <Link className="navbutton" to="/login"> Login </Link>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Zipcode" className="mr-sm-2" />

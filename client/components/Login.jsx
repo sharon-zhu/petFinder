@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {Form, Button, Col} from 'react-bootstrap';
-
+import { Redirect, Link, useHistory } from 'react-router-dom';
 
 
 const Login = () =>{
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  let history = useHistory();
+  
   const submitLoginForm = () => {
     const data = {
       email: email, 
@@ -14,7 +17,9 @@ const Login = () =>{
     }
 
     fetch("/api/login", {method : "POST", headers : {'Content-type' : 'application/json'}, body : JSON.stringify(data)})
-      .then(data => console.log("logged in" , data))
+      .then(data => {
+        history.push('/homepage')
+        console.log("logged in" , data)})
       .catch(err => console.log("error in fetching", err))
   }
 
