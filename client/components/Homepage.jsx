@@ -1,13 +1,12 @@
 import React, { useState, useContext } from 'react';
-
+import {useGlobalContext } from './GlobalContext'
 import Container from 'react-bootstrap/Container'
 import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Col, Row} from 'react-bootstrap';
 
 
 const Homepage = () => {
 
-  const { testerFunction } = useContext(TesterContext)
-
+  const { testTheConsole } = useGlobalContext()
 
    return (
     <div>
@@ -21,7 +20,7 @@ const Homepage = () => {
               <option>Dog</option>
               <option>Cat</option>
             </Form.Control>
-            <Button variant="outline-success" type="submit" onClick={()=> testerFunction()}>Search</Button>
+            <Button variant="outline-success" type="submit" onClick={()=> testTheConsole()}>Search</Button>
           </Form>
         </Row>
       </Container>

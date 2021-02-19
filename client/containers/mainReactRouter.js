@@ -1,10 +1,12 @@
 import React from 'react';
+import styles from '../styles.css';
 // react router
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // pages
 import NewNavbar from '../components/NewNavbar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
+import Homepage from '../components/Homepage'
 // import Error from './Error';
 // import Person from './Person';
 // navbar
@@ -17,7 +19,7 @@ const MainReactRouter = () => {
       <Switch>
 
         <Route exact path='/'>
-          {/* <Home /> */}
+          <Homepage />
         </Route>
 
         <Route path='/login'>
