@@ -7,6 +7,7 @@ import NewNavbar from '../components/NewNavbar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import Homepage from '../components/Homepage'
+import PetContainer from './PetContainer'
 // import Error from './Error';
 // import Person from './Person';
 // navbar
@@ -28,6 +29,9 @@ const MainReactRouter = () => {
 
         <Route path='/signup'>
           <Signup />
+        </Route>
+        <Route path='/results'>
+          <PetContainer />
         </Route>
 
         {/* <Route path='/person/:id' children={<Person />}></Route>

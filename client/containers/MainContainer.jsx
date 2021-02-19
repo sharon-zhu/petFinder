@@ -29,6 +29,15 @@ class MainContainer extends Component {
     this.setState({value: event.target.value});
   }
 
+  /*
+
+  zipcode
+  type of animal
+
+
+
+  */
+
   //handle search requests
   handleSearch(e){
     event.preventDefault();
