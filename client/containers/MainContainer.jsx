@@ -6,7 +6,7 @@ import PetContainer from './PetContainer';
 import Navigation from '../components/Navigation';
 import styles from '../styles.css';
 import Signup from '../components/Signup'
-import Homepage from '../components/Homepage';
+import Homepage from '../components/newNavbar';
 
 class MainContainer extends Component {
   constructor() {
@@ -28,6 +28,15 @@ class MainContainer extends Component {
     console.log(event.target.value)
     this.setState({value: event.target.value});
   }
+
+  /*
+
+  zipcode
+  type of animal
+
+
+
+  */
 
   //handle search requests
   handleSearch(e){

@@ -13,7 +13,7 @@ petController.search = (req,res,next) =>{
   res.locals.query = query.data;
   console.log('pet controller hghghg', query.data)
  
-  next();
+  return next();
   })
   .catch(err => {
     next({

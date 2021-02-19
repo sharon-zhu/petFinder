@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Col} from 'react-bootstrap';
+import { Redirect, Link, useHistory } from 'react-router-dom';
 
 
 const SignUpForm = () => {
@@ -11,8 +12,9 @@ const SignUpForm = () => {
     const [password, setPassword] = useState('')
     const [zipCode, setZipCode] = useState('')
 
+    let history = useHistory();
+
     const submitSignupForm = () => {
-        event.preventDefault();
 
         const data = {
             firstName : firstName,
@@ -23,8 +25,11 @@ const SignUpForm = () => {
         }
 
         fetch('/api/signup',{method : "POST", headers : {'Content-type' : 'application/json'}, body : JSON.stringify(data)})
-        //
-        .then(data => console.log("posted User into Users table", data))
+        .then(data =>{
+        console.log('user signed up', data)
+        // return <Link to="/login"></Nav.Link>
+        history.push('/login')
+        })
         .catch(err => console.log("error in fetching", err))
 
     }
@@ -66,7 +71,6 @@ const SignUpForm = () => {
           </Form>
         </Col>
      <Col></Col>
-</div>)
+  </div>)
 }
-
 export default SignUpForm;
